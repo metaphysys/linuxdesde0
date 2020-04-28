@@ -1,5 +1,8 @@
 #!/bin/bash
-# Simple script to list version numbers of critical development tools
+
+# Este script se ejecuta en la máquina anfitriona base para comprobar la versión 
+# de los paquetes críticos de herramientas de desarrollo necesarias para LFS.
+
 export LC_ALL=C
 bash --version | head -n1 | cut -d" " -f2-4
 MYSH=$(readlink -f /bin/sh)
@@ -49,6 +52,7 @@ makeinfo --version | head -n1  # texinfo version
 xz --version | head -n1
 
 echo 'int main(){}' > dummy.c && g++ -o dummy dummy.c
+
 if [ -x dummy ]
   then echo "g++ compilation OK";
   else echo "g++ compilation failed"; fi
